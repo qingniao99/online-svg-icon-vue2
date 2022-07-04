@@ -6,4 +6,6 @@ const OnlineSvgIcon = {
     }
 }
 
+export  { onlineSvgIcon };
+
 export default OnlineSvgIcon;

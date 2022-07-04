@@ -28,10 +28,12 @@ export default {
         if (mode === 'mask') {
           return {
             'background-color': 'currentColor',
-            'height': '1em',
-            'width': '1em',
-            'mask': `${uri} no-repeat`,
-            '-webkit-mask': `${uri} no-repeat`,
+            height: '1em',
+            width: '1em',
+            'mask-image': `${uri} no-repeat`,
+            '-webkit-mask-image': `${uri}`,
+            'mask-repeat': 'no-repeat',
+            '-webkit-mask-repeat': 'no-repeat',
             'mask-size': '100% 100%',
             '-webkit-mask-size': '100% 100%',
           }
@@ -39,11 +41,12 @@ export default {
         // colored
         else {
           return {
-            'background': `${uri} no-repeat`,
+            'background-image': `${uri}`,
+            'background-repeat': 'no-repeat',
             'background-size': '100% 100%',
             'background-color': 'transparent',
-            'height': '1em',
-            'width': '1em',
+            height: '1em',
+            width: '1em',
           }
         }
       },
