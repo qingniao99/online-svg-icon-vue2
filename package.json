@@ -2,7 +2,7 @@
   "name": "online-svg-icon-vue2",
   "version": "1.0.0",
   "description": "online-svg-icon-vue2",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/main.js",

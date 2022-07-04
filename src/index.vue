@@ -24,7 +24,6 @@ export default {
           : 'background-img'
 
         const uri = `url("data:image/svg+xml;utf8,${this.encodeSvg(this.svg)}")`
-console.log(`${uri} no-repeat`);
         // monochrome
         if (mode === 'mask') {
           return {
@@ -49,11 +48,19 @@ console.log(`${uri} no-repeat`);
         }
       },
   },
-  async mounted() {
-    const res = await axios.get(this.url);
-    this.svg = res.data;
+  watch: {
+    'url'() {
+      this.getSvg();
+    }
+  },
+  mounted() {
+    this.getSvg();  
   },
   methods: {
+    async getSvg() {
+      const res = await axios.get(this.url);
+      this.svg = res.data;
+    },
     encodeSvg(svgString) {
         return svgString.replace('<svg',(~svgString.indexOf('xmlns')?'<svg':'<svg xmlns="http://www.w3.org/2000/svg"'))
         //
