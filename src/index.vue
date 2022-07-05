@@ -65,11 +65,13 @@ export default {
     }
   },
   async mounted() {
-    await this.getSvg(); 
-    this.observerwh = new MutationObserver(this.pwd);
+    await this.getSvg();
+    if (!this.purecss) {
+      this.observerwh = new MutationObserver(this.pwd);
       this.observerwh.observe(this.$refs.wrap, {
           attributes: true,
       });
+    }
   },
   methods: {
     pwd() {
@@ -82,6 +84,7 @@ export default {
       this.up64vg();
     },
     up64vg() {
+      if (this.purecss) return;
       const color = window.getComputedStyle(this.$refs.wrap).color;
       let tepsvg = this.svg;
       tepsvg = tepsvg.replace('currentColor', color);
