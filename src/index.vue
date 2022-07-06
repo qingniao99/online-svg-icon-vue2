@@ -78,6 +78,7 @@ export default {
       this.up64vg();
     },
     async getSvg() {
+      if (!this.url) return;
       const res = await axios.get(this.url);
       console.log(res, 888);
       this.svg = res.data;
@@ -88,7 +89,12 @@ export default {
       const color = window.getComputedStyle(this.$refs.wrap).color;
       let tepsvg = this.svg;
       tepsvg = tepsvg.replace('currentColor', color);
-      this.database64 = `data:image/svg+xml;base64,${window.btoa(tepsvg)}`;
+      try {
+        this.database64 = `data:image/svg+xml;base64,${window.btoa(tepsvg)}`;
+      } catch (error) {
+        console.log(error);
+        this.database64 = `data:image/svg+xml;utf8,${this.encodeSvg(this.svg)}`;
+      }
     },
     encodeSvg(svgString) {
         return svgString.replace('<svg',(~svgString.indexOf('xmlns')?'<svg':'<svg xmlns="http://www.w3.org/2000/svg"'))
