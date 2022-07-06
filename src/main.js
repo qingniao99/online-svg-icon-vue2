@@ -8,7 +8,7 @@ const OnlineSvgIcon = {
 
 const simpleColor = (svg) => {
     const temp1 = svg.replace(/(fill=)("([\s\S]*?)")/g, (p1, p2) => {
-        return p2+'currentColor';
+        return `${p2}"currentColor"`;
     });
     const temp2 = temp1.replace(/(fill:)(([\s\S]*?);)/g, (p1, p2) => {
         return p2+'currentColor;';
