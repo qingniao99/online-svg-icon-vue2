@@ -89,12 +89,7 @@ export default {
       const color = window.getComputedStyle(this.$refs.wrap).color;
       let tepsvg = this.svg;
       tepsvg = tepsvg.replace('currentColor', color);
-      try {
-        this.database64 = `data:image/svg+xml;base64,${window.btoa(tepsvg)}`;
-      } catch (error) {
-        console.log(error);
-        this.database64 = `data:image/svg+xml;utf8,${this.encodeSvg(this.svg)}`;
-      }
+      this.database64 = `data:image/svg+xml;base64,${(window.btoa(unescape(encodeURIComponent(tepsvg))))}`;
     },
     encodeSvg(svgString) {
         return svgString.replace('<svg',(~svgString.indexOf('xmlns')?'<svg':'<svg xmlns="http://www.w3.org/2000/svg"'))
