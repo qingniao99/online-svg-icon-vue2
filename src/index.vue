@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import {fetch as fetchPolyfill} from 'whatwg-fetch'
+
 export default {
   name: 'onlineSvgIcon',
   props: {
@@ -79,9 +80,11 @@ export default {
     },
     async getSvg() {
       if (!this.url) return;
-      const res = await axios.get(this.url);
-      console.log(res, 888);
-      this.svg = res.data;
+      const res = await fetchPolyfill(this.url, {
+        mode: 'cors'
+      });
+      const text = await res.text();
+      this.svg = text;
       this.up64vg();
     },
     up64vg() {

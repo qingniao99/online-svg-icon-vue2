@@ -1,17 +1,17 @@
 {
   "name": "online-svg-icon-vue2",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "online-svg-icon-vue2",
-  "main": "src/main.js",
+  "main": "dist/online-svg-icon-vue2.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.27.2",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.13",
